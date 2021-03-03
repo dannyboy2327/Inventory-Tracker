@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Inventory Tracker</string>
+
+    <string name="desc_inventory_logo">Inventory tracker logo and name</string>
+    <string name="inventory_tracker">Inventory Tracker</string>
+    <string name="signed_out">Signed Out</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_account">Create Account</string>
+    <string name="verify">Verify</string>
+    <string name="reload">Reload</string>
+    <string name="auth_failed">\"Authentication failed\"</string>
+
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
+    <string name="firebase_status_fmt">Firebase UID: %s</string>
 </resources>
