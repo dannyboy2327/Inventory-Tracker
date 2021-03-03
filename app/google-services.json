@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "61466016350",
+    "project_id": "inventory-tracker-326b6",
+    "storage_bucket": "inventory-tracker-326b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:61466016350:android:31acc41faf653af11112cf",
+        "android_client_info": {
+          "package_name": "com.anomalydev.inventorytracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "61466016350-pvq509m7dbvflm4aac1o7u956oqsu462.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anomalydev.inventorytracker",
+            "certificate_hash": "d75be23b3b95ba15e89a43fd41b3e5405ce004bd"
+          }
+        },
+        {
+          "client_id": "61466016350-u9vfjandb5rs2chvf34bg1i7sh7gpghm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6RlzKMvD3MclOFuh2uIo_1QvMd5vz6a4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "61466016350-u9vfjandb5rs2chvf34bg1i7sh7gpghm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
