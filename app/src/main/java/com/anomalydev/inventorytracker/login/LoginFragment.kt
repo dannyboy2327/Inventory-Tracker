@@ -2,12 +2,12 @@ package com.anomalydev.inventorytracker.login
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.anomalydev.inventorytracker.R
 import com.anomalydev.inventorytracker.databinding.FragmentLoginBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -34,13 +34,16 @@ class LoginFragment : Fragment(), View.OnClickListener {
             false
         )
 
+        //(activity as DrawerLocker).setDrawerEnabled(false)
+
+
         auth = Firebase.auth
 
         binding.emailSignInButton.setOnClickListener(this)
         binding.emailCreateAccountButton.setOnClickListener(this)
         binding.signOutButton.setOnClickListener(this)
         binding.verifyEmailButton.setOnClickListener(this)
-        binding.reloadButton.setOnClickListener(this)
+        binding.refreshButton.setOnClickListener(this)
 
         return binding.root
     }
@@ -59,7 +62,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
             )
             R.id.signOutButton -> signOut()
             R.id.verifyEmailButton -> sendEmailVerification()
-            R.id.reloadButton -> reload()
+            R.id.refreshButton -> refresh()
         }
     }
 
@@ -164,19 +167,19 @@ class LoginFragment : Fragment(), View.OnClickListener {
     /**
      * This method is in charge of reloading the UI given if there is a user logged in
      */
-    private fun reload() {
+    private fun refresh() {
         auth.currentUser!!.reload().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 updateUI(auth.currentUser)
                 Toast.makeText(
                     context,
-                    "Reload successful!",
+                    "Refresh successful!",
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
                 Toast.makeText(
                     context,
-                    "Failed to reload user.",
+                    "Failed to refresh.",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -223,6 +226,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
             if (user.isEmailVerified) {
                 binding.verifyEmailButton.visibility = View.GONE
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+                Toast.makeText(context, "Navigated to Home Screen", Toast.LENGTH_SHORT).show()
             } else {
                 binding.verifyEmailButton.visibility = View.VISIBLE
             }
@@ -257,7 +262,12 @@ class LoginFragment : Fragment(), View.OnClickListener {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         if (currentUser != null) {
-            reload()
+            if (!currentUser.isEmailVerified) {
+                refresh()
+            } else {
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+                Toast.makeText(context, "Navigated to Home Screen", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
